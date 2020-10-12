@@ -1,0 +1,119 @@
+.circle {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    display: inline-block;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #808080;
+}
+
+.rounded-rectangle {
+    width: 62px;
+    height: 62px;
+    border-radius: 20%;
+    display: inline-block;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #808080;
+}
+
+.i {
+    background-image: url(../img/icon-list.png);
+}
+
+.i-person {
+    background-size: 800%;
+    background-position-x: 9%;
+    background-position-y: 9%; 
+}
+
+.i-phone {
+    background-size: 800%;
+    background-position-x: 36%;
+    background-position-y: 9%; 
+} 
+
+.i-message {
+    background-size: 800%;
+    background-position-x: 63%;
+    background-position-y: 9%; 
+} 
+
+.i-clock {
+    background-size: 800%;
+    background-position-x: 90%;
+    background-position-y: 9%; 
+}
+
+.i-music {
+    background-size: 800%;
+    background-position-x: 9%;
+    background-position-y: 36%; 
+} 
+
+.i-photo {
+    background-size: 800%;
+    background-position-x: 36%;
+    background-position-y: 36%; 
+} 
+
+.i-photocamera {
+    background-size: 800%;
+    background-position-x: 63%;
+    background-position-y: 36%; 
+} 
+
+.i-videocamera {
+    background-size: 800%;
+    background-position-x: 90%;
+    background-position-y: 36%; 
+} 
+
+.i-webcam {
+    background-size: 800%;
+    background-position-x: 9%;
+    background-position-y: 63%; 
+} 
+
+.i-microphone {
+    background-size: 800%;
+    background-position-x: 36%;
+    background-position-y: 63%; 
+} 
+
+.i-trashcan {
+    background-size: 800%;
+    background-position-x: 63%;
+    background-position-y: 63%; 
+} 
+
+.i-find {
+    background-size: 800%;
+    background-position-x: 90%;
+    background-position-y: 63%; 
+} 
+
+.i-location {
+    background-size: 800%;
+    background-position-x: 9%;
+    background-position-y: 90%; 
+} 
+
+.i-setting {
+    background-size: 800%;
+    background-position-x: 36%;
+    background-position-y: 90%; 
+} 
+
+.i-speaker {
+    background-size: 800%;
+    background-position-x: 63%;
+    background-position-y: 90%; 
+} 
+
+.i-note {
+    background-size: 800%;
+    background-position-x: 90%;
+    background-position-y: 90%; 
+}
