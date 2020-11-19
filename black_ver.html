@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><div id="translate-button" style="background-color: white;"><img src="data:image/png;base64,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"></div><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FuSheng's Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<!-- Facebook and Twitter integration -->
+<meta property="og:title" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<meta property="og:site_name" content="">
+<meta property="og:description" content="">
+<meta name="twitter:title" content="">
+<meta name="twitter:image" content="">
+<meta name="twitter:url" content="">
+<meta name="twitter:card" content="">
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<link rel="shortcut icon" href="https://preview.colorlib.com/theme/jackson/favicon.ico">
+<link href="Jackson%20Template_files/css_002.css" rel="stylesheet">
+<link href="Jackson%20Template_files/css.css" rel="stylesheet">
+<!-- Animate.css -->
+<link rel="stylesheet" href="Jackson%20Template_files/animate.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="Jackson%20Template_files/icomoon.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="Jackson%20Template_files/bootstrap.css">
+<!-- Flexslider  -->
+<link rel="stylesheet" href="Jackson%20Template_files/flexslider.css">
+<!-- Flaticons  -->
+<link rel="stylesheet" href="Jackson%20Template_files/flaticon.html">
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="Jackson%20Template_files/owl_002.css">
+<link rel="stylesheet" href="Jackson%20Template_files/owl.css">
+<!-- Theme style  -->
+<link rel="stylesheet" href="Jackson%20Template_files/style_black.css">
+<!-- Modernizr JS -->
+<script src="Jackson%20Template_files/modernizr-2.js"></script>
+<!-- FOR IE9 below -->
+<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+<style data-styled="" data-styled-version="4.2.0"></style></head>
+<body>
+<div id="colorlib-page" style="background-color: black;">
+<div class="container-wrap">
+<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+<aside id="colorlib-aside" role="complementary" class="border js-fullheight" style="height: 978px;">
+<div class="text-center">
+<div class="author-img" style="background-image: url(./figs/img/me.jpg);background-size: 200%;background-position-x: -130px;"></div>
+<h1 id="colorlib-logo"><a href="#colorlib-hero">Fu-Sheng Kao</a></h1>
+<span class="position" style="font-size:medium;"><a href="#colorlib-about">Student</a> in National Taiwan </span>
+</div>
+<nav id="colorlib-main-menu" role="navigation" class="navbar">
+<div id="navbar" class="collapse">
+<ul>
+<li class="active"><a href="#" data-nav-section="home">Home</a></li>
+<li><a href="#" data-nav-section="about">About</a></li>
+<li><a href="#" data-nav-section="skills">Skills</a></li>
+<li><a href="#" data-nav-section="education">Education</a></li>
+<li><a href="#" data-nav-section="experience">Experience</a></li>
+<li><a href="#" data-nav-section="work">Work</a></li>
+<li><a href="#" data-nav-section="contact">Contact</a></li>
+<a href="https://neko2048.github.io">White Version</a>
+</ul>
+</div>
+</nav>
+<div class="colorlib-footer">
+<p><small>© <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright ©<script>document.write(new Date().getFullYear());</script>2020 All rights reserved | This template is made by <a href="https://colorlib.com/" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->  <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash.com</a></span></small></p>
+</div>
+</aside>
+<div id="colorlib-main">
+<section id="colorlib-hero" class="js-fullheight" data-section="home" style="height: 978px;">
+<div class="flexslider js-fullheight" style="height: 978px;">
+<ul class="slides">
+<li style="background-image: url(&quot;figs/background/cloud.jpg&quot;); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" 
+class="flex-active-slide" data-thumb-alt="">
+<div class="overlay"></div>
+<div class="container-fluid" id="first">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text animated fadeInUp" style="height: 978px;">
+<div class="slider-text-inner js-fullheight" style="height: 978px;">
+<div class="desc">
+<h1>Hi! I'm <br>Fu-Sheng Kao</h1>
+<h2><b>A student majoring in </br><font color="#2ca9e1">Atmospheric Sciences</font> and 
+</br><font color="#e02d4e">Neurobiology and Cognitive Science</b></font></h2>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li style="background-image: url(&quot;figs/background/matrix.gif&quot;); width: 100%; 
+float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;
+" data-thumb-alt="">
+<div class="overlay"></div>
+<div class="container-fluid" id="second">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text" style="height: 978px;">
+<div class="slider-text-inner">
+<div class="desc">
+<h1><font color="white">I am a<br>Programmer</font></h1>
+<h2><font color="white"><b>Numerical Atmospheric Modeling</br>Neural and Behavioral Modeling</br>Artificial Intelligence</b></font></h2>
+<!--<p><a class="btn btn-primary btn-learn">View My Work<i class="icon-briefcase3"></i></a></p>-->
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+	<ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li>
+		<li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul>
+</div>
+
+
+</section>
+
+<section class="colorlib-about" id="colorlib-about" data-section="about">
+<div class="colorlib-narrow-content">
+<div class="row">
+<div class="col-md-12">
+<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
+<div class="col-md-12">
+<div class="about-desc">
+<span class="heading-meta"><font color=white>About Me</font></span>
+<h2 class="colorlib-heading"><font color=white>Who Am I?</font></h2>
+<p><strong><font color=white>I'm Fu-Sheng Kao.</font></br></strong>
+<font color=white>I'm a student studying in National Taiwan University (NTU), majoring in atmospheric sciences. 
+To proficient in AI, I'm also in the program called "Neurobiology and Cognitive Science Program".
+What I am good at is modelling no matter in atmospheric one or cognitive one numerically.
+It's awesome to see model work after hard trying.</font></br>
+</br>
+<font color=white>Besides, learning language is also one of my interests. 
+I can speak Chinese, English, Taiwanese, and Japanese.</font>
+</p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3 animate-box white_v" data-animate-effect="fadeInLeft">
+<div class="services color-1">
+<span class="icon2"><i class="icon-bulb"><button onclick="snd.play()" style="background-color: Transparent;background-repeat: no-repeat;border: none;cursor: pointer;overflow: hidden;outline: none;position: 
+relative;top: -13px;height: 17px;width: 20px;left: -20px;"> </button>
+</i></span>
+<h3>Modeling</h3>
+</div>
+</div>
+<div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+<div class="services color-2">
+<span class="icon2"><i class="icon-globe-outline"></i></span>
+<h3>Science</h3>
+</div>
+</div>
+<div class="col-md-3 animate-box" data-animate-effect="fadeInTop">
+<div class="services color-3">
+<span class="icon2"><i class="icon-data"></i></span>
+<h3>Language</h3>
+</div>
+</div>
+<div class="col-md-3 animate-box" data-animate-effect="fadeInBottom">
+<div class="services color-4">
+<span class="icon2"><i class="icon-phone3"></i></span>
+<h3>Travel</h3>
+</div>
+</div>
+</div>
+<!--<div class="row">
+<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+<div class="hire">
+<h2>I am happy to know you <br>that 300+ projects done sucessfully!</h2>
+<a href="#" class="btn-hire">Hire me</a>
+</div>
+</div>
+</div>-->
+
+</div>
+</div>
+</div>
+</section>
+<section class="colorlib-services" data-section="services">
+<div class="colorlib-narrow-content">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+<span class="heading-meta"><font color=white>What I do?</font></span>
+<h2 class="colorlib-heading"><font color=white>Here are some of my expertise</font></h2>
+</div>
+</div>
+<div class="row row-pt-md">
+<div class="col-md-4 text-center animate-box">
+<div class="services color-1">
+<span class="icon">
+<i class="icon-bulb" style="margin-left: 0px;padding-left: 26px;"></i><button onclick="snd.play()" style="background-color: Transparent;background-repeat: no-repeat;border: none;cursor: pointer;overflow: hidden;outline: none;position: 
+relative;top: 3px;height: 17px;width: 20px;left: -37px;"> </button>
+</span>
+<div class="desc">
+<h3>Modeling</h3>
+<p>Modeling 2D Convection by Math Equations and Numerical Skills</p>
+</div>
+</div>
+</div>
+<div class="col-md-4 text-center animate-box">
+<div class="services color-2">
+<span class="icon">
+<i class="icon-data"></i>
+</span>
+<div class="desc">
+<h3>Language</h3>
+<p>Learning Languages & Cultures: Chinese, English, Taiwanese, and Japanese</p>
+</div>
+</div>
+</div>
+<div class="col-md-4 text-center animate-box">
+<div class="services color-3">
+<span class="icon">
+<i class="icon-phone3"></i>
+</span>
+<div class="desc">
+<h3>Atmospheric Science</h3>
+<p>Numerical Modeling and Microphysics Parameterization</p>
+</div>
+</div>
+</div>
+<div class="col-md-4 text-center animate-box">
+<div class="services color-4">
+<span class="icon">
+<i class="icon-layers2"></i>
+</span>
+<div class="desc">
+<h3>Graphic Design</h3>
+<p>Making Infographic, proficient in Photoshop, PPT visual design</p>
+</div>
+</div>
+</div>
+<div class="col-md-4 text-center animate-box">
+<div class="services color-5">
+<span class="icon">
+<i class="icon-AI"></i>
+</span>
+<div class="desc">
+<h3>Artificial Intelligence</h3>
+<p>Learning Counterfactual Regression and Affective Artificial Intelligence</p>
+</div>
+</div>
+</div>
+<div class="col-md-4 text-center animate-box">
+<div class="services color-6">
+<span class="icon">
+<i class="icon-program"></i>
+</span>
+<div class="desc">
+<h3>Programming</h3>
+<p>Proficient in  Python, Fortran, R, Javascript, C++, and so on.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(./figs/background/cloud2.jpg);" 
+data-stellar-background-ratio="0.5">
+<div class="overlay"></div>
+<div class="colorlib-narrow-content">
+<div class="row">
+</div>
+<div class="row">
+<div class="col-md-3 text-center animate-box">
+<span class="colorlib-counter js-counter" data-from="0" data-to="3" data-speed="5000" data-refresh-interval="25">3</span>
+<span class="colorlib-counter-label" style="font-weight: bold;">Cross-Domain</span>
+</div>
+<div class="col-md-3 text-center animate-box">
+<span class="colorlib-counter js-counter" data-from="0" data-to="4" data-speed="5000" data-refresh-interval="10">4</span>
+<span class="colorlib-counter-label" style="font-weight: bold;">Projects</span>
+</div>
+<div class="col-md-3 text-center animate-box">
+<span class="colorlib-counter js-counter" data-from="0" data-to="15" data-speed="5000" data-refresh-interval="50">15</span>
+<span class="colorlib-counter-label" style="font-weight: bold;">Partners</span>
+</div>
+<div class="col-md-3 text-center animate-box">
+<span class="colorlib-counter js-counter" data-from="0" data-to="500" data-speed="5000" data-refresh-interval="50">500</span>
+<span class="colorlib-counter-label" style="font-weight: bold;">Infographic</span>
+</div>
+</div>
+</div>
+</div>
+<section class="colorlib-skills" data-section="skills">
+<div class="colorlib-narrow-content">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+<span class="heading-meta"><font color=white>My Specialty</font></span>
+<h2 class="colorlib-heading animate-box"><font color=white>My Skills</font></h2>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+<p><font color=white>Program Languages</font></p>
+</div>
+
+<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+<div class="progress-wrap">
+<h3><font color=white>Python</font></h3>
+<div class="progress">
+<div class="progress-bar color-2" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
+<span>90%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+<div class="progress-wrap">
+<h3><font color=white>Fortran</font></h3>
+<div class="progress">
+<div class="progress-bar color-3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+<span>80%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+<div class="progress-wrap">
+<h3><font color=white>CSS3</font></h3>
+<div class="progress">
+<div class="progress-bar color-4" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+<span>70%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+<div class="progress-wrap">
+<h3><font color=white>HTML</font></h3>
+<div class="progress">
+<div class="progress-bar color-5" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+<span>70%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+	<div class="progress-wrap">
+	<h3><font color=white>Grads</font></h3>
+	<div class="progress">
+	<div class="progress-bar color-6" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
+	<span>60%</span>
+	</div>
+	</div>
+	</div>
+	</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+	<div class="progress-wrap">
+	<h3><font color=white>C++</font></h3>
+	<div class="progress">
+	<div class="progress-bar color-1" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+	<span>70%</span>
+	</div>
+	</div>
+	</div>
+	</div>
+<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+	<p><font color=white>Foreign Languages</font></p>
+	</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+	<div class="progress-wrap">
+	<h3><font color=white>JLPT</font></h3>
+	<div class="progress">
+	<div class="progress-bar color-2" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+	<span>N2</span>
+	</div>
+	</div>
+	</div>
+	</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+	<div class="progress-wrap">
+	<h3><font color=white>TOEIC</font></h3>
+	<div class="progress">
+	<div class="progress-bar color-4" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+	<span>800</span>
+	</div>
+	</div>
+	</div>
+	</div>
+<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+	<p><font color=white>Other Skills</font></p>
+	</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+	<div class="progress-wrap">
+	<h3><font color=white>Photoshop</font></h3>
+	<div class="progress">
+	<div class="progress-bar color-1" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+	<span>75%</span>
+	</div>
+	</div>
+	</div>
+	</div>
+</div>
+</div>
+</section>
+<section class="colorlib-education" data-section="education">
+<div class="colorlib-narrow-content">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+<span class="heading-meta"><font color=white>Education</font></span>
+<h2 class="colorlib-heading animate-box"><font color=white>Education</font></h2>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+<div class="fancy-collapse-panel">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" 
+    aria-controls="collapseOne">DIPLOMA IN ATMOSPHERIC SCIENCES
+    </a>
+    </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+    <div class="row">
+    <div class="col-md-6">
+    <p>Not Yet until 2022 even I wrote it.</p>
+    </div>
+    <div class="col-md-6">
+    <p>Averaged GPA: 3.94/4.30 among 2 years</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<div class="panel panel-default">
+<div class="panel-heading" role="tab" id="headingTwo">
+<h4 class="panel-title">
+<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" 
+aria-expanded="false" aria-controls="collapseTwo">PROGRAM DIPLOMA IN NEUROBIOLOGY & COGNITIVE SCIENCE
+</a>
+</h4>
+</div>
+<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+<div class="panel-body">
+<p>Not Yet until 2022 even I wrote it.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading" role="tab" id="headingThree">
+<h4 class="panel-title">
+<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" 
+aria-expanded="false" aria-controls="collapseThree">TAICHUNG MUNICIPAL TAICHUNG FIRST SENIOR HIGHT SCHOOL
+</a>
+</h4>
+</div>
+<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+<div class="panel-body">
+<p>Graduated in 2018. I'm first 2% in Chemistry domain of school.</br>
+	Besides, I got 72 in total grade of General Scholastic Ability Test.
+	13, 14, and 15 in Chinese, English, and others respectively.</br> 
+	Last but not the least, I got 18/20 in English writing for Advanced Subjects Test.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="colorlib-experience" data-section="experience">
+<div class="colorlib-narrow-content">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+<span class="heading-meta"><font color=white>Experience</font></span>
+<h2 class="colorlib-heading animate-box"><font color=white>Work/Society Experience</font></h2>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<div class="timeline-centered">
+<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+<div class="timeline-entry-inner">
+<div class="timeline-icon color-1">
+<i class="icon-pen2"></i>
+</div>
+<div class="timeline-label">
+<h2>WeatherRisk Trainee <span>2018-2019</span></h2>
+<p>Being a trainee at WeatherRisk, the local weather company. I was responsible for the infographic about weather information.
+	Simultaneously, I learned the ability to edit videos and some of media.
+</p>
+</div>
+</div>
+</article>
+<article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
+<div class="timeline-entry-inner">
+<div class="timeline-icon color-2">
+<i class="icon-club"></i>
+</div>
+<div class="timeline-label">
+<h2>Kendo Club and Trail Action Club <span>2018-2020</span></h2>
+<p>I love to embrace many different cultures and activities that I have never experienced.
+	Thus, I choose some clubs that seems unpopular for me.
+	In society activities, I enrolled both two clubs. I participated in Kendo Club to learn many 
+	Japanese cultures deeply and in person and enhance physical strength. In Trail Action Club, we went to many
+	places like Hehuan Mountain and Xitou to build trails by the local materials like woods and rocks, which is an exhausted but fascinated experience. 
+</p>
+</div>
+</div>
+</article>
+<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+<div class="timeline-entry-inner">
+<div class="timeline-icon color-3">
+<i class="icon-MIL"></i>
+</div>
+<div class="timeline-label">
+<h2>Summer Intership in MIL <span>2020</span></h2>
+<p>I participated the summer intership in Modeling and Informatic Lab (MIL). In the entire summer vacation, 
+	I and my partners read papers about emotion, dual processes, logic, and computational models for psychology.
+	In the end of the summer, I studied for the "Neural Symbolic" model, which combines CNN, LSTM and reasoning process.
+	This model has the ability to judge the question for one scene image and return an answer according to the figure and question given.
+</p>
+</div>
+</div>
+</article>
+<article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
+<div class="timeline-entry-inner">
+<div class="timeline-icon color-4">
+<i class="icon-cloud"></i>
+</div>
+<div class="timeline-label">
+<h2>Summer Research Project in LCDM <span>2020</span></h2>
+<p>In this research project following with Lab for Cloud Dynamics and Modeling, I build up my own 2D convection model about atmosphere from zero.
+We can set up initial atmosphere condition like one thermal bubble inside and it can evolve as a convective cloud including cloud, rain process.
+</p>
+</div>
+</div>
+</article>
+<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+<div class="timeline-entry-inner">
+<div class="timeline-icon color-5">
+<i class="icon-AI2"></i>
+</div>
+<div class="timeline-label">
+<h2>AAI Project <span>2020</span></h2>
+<p>Now, I coroperate with others trying to build up a model having machenism of emotion, learning, and ability to response to the environment. 
+
+</p>
+</div>
+</div>
+</article>
+<article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+<div class="timeline-entry-inner">
+<div class="timeline-icon color-none">
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="colorlib-work" data-section="work">
+<div class="colorlib-narrow-content">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+<span class="heading-meta"><font color=white>My Work</font></span>
+<h2 class="colorlib-heading animate-box"><font color=white>Work Gallery</font></h2>
+</div>
+</div>
+<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
+<div class="col-md-12">
+<p class="work-menu"><span><a href="#" class="active">Model</a></span></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+<div class="project" style="background-image: url(./figs/img/2Dconv.jpg); background-size: 75%; border: black;">
+<div class="desc">
+<div class="con">
+<h3><a href="https://preview.colorlib.com/theme/jackson/work.html">2D CONVECTION</a></h3>
+<span><b>Website</b> 2D convection model: modeling convective evolution process including wind, cloud, and rain.</span>
+<p class="icon">
+<span><a href="https://github.com/neko2048/2Dconv" target=_blank><i class="link"></i></a></span>
+
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+<div class="project" style="background-image: url(./figs/img/neu.jpg);">
+<div class="desc">
+<div class="con">
+<h3><a href="https://preview.colorlib.com/theme/jackson/work.html">Neural Symbolic</a></h3>
+<span><b>No Link</b> Neural Symbolic</span>
+
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+	<div class="project" style="background-image: url(./figs/img/continue.png);background-position-x: -130px;">
+	<div class="desc">
+	<div class="con">
+	<h3><a href="https://preview.colorlib.com/theme/jackson/work.html">To be continued</a></h3>
+	<span><b>No Link</b></span>
+	
+	</div>
+	</div>
+	</div>
+	</div>
+</div>
+</section>
+
+<section class="colorlib-contact" data-section="contact">
+<div class="colorlib-narrow-content">
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+<span class="heading-meta"><font color=white>Get in Touch</font></span>
+<h2 class="colorlib-heading"><font color=white>Contact</font></h2>
+</div>
+</div>
+<div class="row">
+<div class="col-md-5">
+<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+<div class="colorlib-icon">
+<i class="icon-mail"></i>
+</div>
+<div class="colorlib-text">
+<p><a href="mailto:b07209009@ntu.edu.tw"><font color=white>b07209009@ntu.edu.tw</font></a></p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+</div><!-- end:colorlib-main -->
+</div><!-- end:container-wrap -->
+</div><!-- end:colorlib-page -->
+<!-- jQuery -->
+<script src="Jackson%20Template_files/jquery_003.js"></script>
+<!-- jQuery Easing -->
+<script src="Jackson%20Template_files/jquery_002.js"></script>
+<!-- Bootstrap -->
+<script src="Jackson%20Template_files/bootstrap.js"></script>
+<!-- Waypoints -->
+<script src="Jackson%20Template_files/jquery.js"></script>
+<!-- Flexslider -->
+<script src="Jackson%20Template_files/jquery_005.js"></script>
+<!-- Owl carousel -->
+<script src="Jackson%20Template_files/owl.js"></script>
+<!-- Counters -->
+<script src="Jackson%20Template_files/jquery_004.js"></script>
+<!-- MAIN JS -->
+<script src="Jackson%20Template_files/main.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="Jackson%20Template_files/js"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-23581568-13');</script>
+
+<script>
+    var snd = new Audio("./sounds/Duck-quack-trim.mp3"); 
+</script>
+
+<div id="my-extension-installed" style="visibility: hidden;"></div></body></html>
