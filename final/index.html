@@ -7,7 +7,8 @@
     <div id="content" class="site-content"><script src="js_file/terra.js"></script>    <!-- Basic CA package by MIT -->
 <!--<script src="js_file/lodash.js"></script> -->  <!-- Array manipulation -->
 <script src="js_file/terra_more.js"></script> <!-- Extra CA functions added by Bram van Dijk 2018 -->
-
+<script src="js_file/jquery-1.11.1.js"></script>
+<link rel="stylesheet" href="js_file/css.css">
 <div align="center">
 <font size="50"><span style="color:#00ac25;"><b>Plant</span>, <span style="color:#0000ff;">Bugs</span>, and <span style="color:#ff0000;">Birds</span></b><br></font>
 <br>
@@ -17,8 +18,11 @@
 <br><br>
 
 <!--Canvas for crature -->
+
 <canvas id="heres" style="border:0px solid #d3d3d3;" width="1" height="1">
     Your browser does not support the HTML5 canvas tag.</canvas>
+<br>
+
 
 
 <canvas width="1050" height="300" style="width: 840px; height: 30px;padding-left: 0;padding-right: 0;
@@ -140,6 +144,12 @@ var interval = setInterval(function () { CA.reportLiving(); }, 800);		// Reports
 <script language="javascript">
 document.getElementById('myCanvas').style.width = CA.width*CA.cellSize + "px";
 document.getElementById('myCanvas').style.height = CA.height*CA.cellSize + "px";
+$(document).ready(function(){
+  $("p").click(function(){
+    location.reload();
+  });
+});
+
 </script>
 <br><br>
 <button class="w3-btn" style="width:140px;height:50px;" onclick="pause()">
@@ -148,6 +158,7 @@ document.getElementById('myCanvas').style.height = CA.height*CA.cellSize + "px";
 	<img src="./img/play.png" style="width: 18px;height: 18px;">  <font size="5"> Play </font> </button>
 <button class="w3-btn" style="width:140px;height:50px;" onclick="reset()">
 	<img src="./img/replay-arrow.png" style="width: 18px;height: 18px;">  <font size="5"> Reset </font> </button>
+<p>Click on me to restart demostration</p>
 <br><br>
 <div style="width:60%;margin-right: auto; margin-left: auto; " border="0">
 <font size=5 style="margin-right: 60px;">
@@ -230,12 +241,12 @@ var interval = setInterval(function () { graphUpdate(); }, 100);
 
 </script>
 <br>
-<font size="3">The other game:  
-    <a href="https://neko2048.github.io/final/foodchain.html">(https://neko2048.github.io/final/foodchain.html</a>)</font>
-<br>
-<br>
 <font size="3">(made with terrajs javascript library from Riley Shaw, 
     <a href="https://rileyjshaw.com/terra/">https://rileyjshaw.com/terra/</a>)</font>
+<br>
+<br>
+<font size="3">The other game:  
+    <a href="https://neko2048.github.io/final/foodchain.html">https://neko2048.github.io/final/foodchain.html</a>)</font>
 <br>
 </div>
 </div>
