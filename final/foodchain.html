@@ -1,0 +1,260 @@
+<html lang="en-GB">
+
+<head><title>FoodChain</title></head>
+<body class="error404 custom-background wp-custom-logo right-sidebar  hfeed" bgcolor="#ddddf8">
+
+<div id="page" class="site ">
+<div id="content" class="site-content"><script src="js_file/terra.js"></script>    <!-- Basic CA package by MIT -->
+<!--<script src="js_file/lodash.js"></script> -->   <!-- Array manipulation -->
+<script src="js_file/terra_more.js"></script> <!-- Extra CA functions added by Bram van Dijk 2018 -->
+
+<div align="center">
+<font size="50"><span style="color:#00ac25;"><b>Plant</span>, <span style="color:#808080;">Goat</span>, and <span style="color:#ff9100;">Lion</span></b><br></font>
+<br>
+<font size="5">-Goats eat Plants. Lions eat Goats.-</font>
+<br>
+<br>
+
+<!--Canvas for crature -->
+<canvas id="heres" style="border:0px solid #d3d3d3;" width="1" height="1">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+    <canvas width="1050" height="300" style="width: 840px; height: 30px;padding-left: 0;padding-right: 0;
+    margin-left: auto;margin-right: auto;display: block;"></canvas>
+
+<!--<canvas id="hereins" style="border:1px solid #d3d3d3;" width="10" height="10">Your browser does not support the HTML5 canvas tag.</canvas>-->
+<script language="javascript">
+
+/**
+** FIRST SETUP SOME VARIABLES
+*/
+
+var plantdeath = 0.1;
+var plantbirth = 1;
+var goatbirth = 0.03;
+var goatdeath = 0.2;
+var lionbirth = 0.01;
+var liondeath = 0.2;
+
+window.onload = function(){
+  document.getElementById("plantdeath").value = plantdeath;
+  document.getElementById("plantbirth").value = plantbirth;
+  document.getElementById("goatbirth").value = goatbirth;
+  document.getElementById("goatdeath").value = goatdeath;
+  document.getElementById("lionbirth").value = lionbirth;
+  document.getElementById("liondeath").value = liondeath;
+}
+
+var CA = new terra.Terrarium(105, 20, {
+  cellSize:10,
+  neighborhood: 'moore',
+  insertAfter: document.getElementById('heres'),
+  periodic: true
+});
+
+/**
+	The following functions interact with the web-page form elements
+**/
+function pause()
+{// Pause Btn //
+	CA.stop();
+	paused = true;
+}
+function cont()
+{// Continue Btn //
+	if(!paused) return
+	CA.simulate();
+	paused = false;
+}
+function reset()
+{// Reset Btn //
+	CA.grid = CA.makeGrid('Pred');
+	Ca.draw();
+}
+function setplantbirth()
+{// Reset plant birth rate
+	plantbirth = document.getElementById("plantbirth").value;
+}
+function setplantdeath()
+{// Reset plant death rate
+	plantdeath = document.getElementById("plantdeath").value;
+}
+function setgoatdeath()
+{// Reset predator death rate
+	goatdeath = document.getElementById("goatdeath").value;
+}
+function setgoatbirth()
+{// Reset predator birth rate
+	goatbirth = document.getElementById("goatbirth").value;
+}
+function setliondeath()
+{// Reset predator death rate
+	liondeath = document.getElementById("liondeath").value;
+}
+function setlionbirth()
+{// Reset predator birth rate
+	lionbirth = document.getElementById("lionbirth").value;
+}
+
+</script>
+
+<script language="javascript">
+terra.registerCA(
+{
+  type: 'Pred',
+  colors: ['0,0,0,1', '0, 172, 37,1', '220, 220, 220,1', '255, 145, 0, 1'],
+  colorFn: function () { return this.colors[this.state];},
+  process: function (neighbors, x, y) 
+  { /* Calculate the number of creatures*/
+    var numgoat = neighbors.filter(function (spot) {
+      return spot.creature.state === 2;
+	}).length; /*creature 2*/
+	var numlion = neighbors.filter(function (spot) {
+      return spot.creature.state === 3;
+    }).length; /*creature 3*/
+	var numplant = neighbors.filter(function (spot) {
+      return spot.creature.state === 1;
+    }).length;/*creature 1*/
+    
+    if(!this.state && Math.random() < plantbirth*numplant) this.state = 1;	
+    // If empty (!this.state) become plant (1) with probability plantbirth per plant
+	
+	if(this.state === 1)
+	{
+        if(Math.random() < goatbirth*numplant) this.state=2;
+        // If plant, it has a probability of 'goatbirth' to take over a plant ('eating it')
+		else if(Math.random() < plantdeath) this.state = 0;
+	}
+	if(this.state === 2)
+	{
+		if(Math.random() < lionbirth*numgoat) this.state=3;	
+		if(Math.random() < goatdeath) this.state = 0;
+	}
+	if(this.state === 3)
+	{
+		if(Math.random() < liondeath) this.state = 0;
+	}
+    return true;
+  }
+}
+, function () {
+  this.state = Math.floor(Math.random() * 2);
+  if(Math.random() < 0.95) this.state = 0;
+}
+);
+
+CA.grid = CA.makeGrid('Pred');
+CA.grid = CA.step(5);
+CA.draw();
+if(!paused) CA.simulate();
+
+var interval = setInterval(function () { CA.reportTime(); }, 200); 			// Reports time to a div called "time" 
+var interval = setInterval(function () { CA.reportLiving(); }, 800);		// Reports living predator / plant to console
+</script>
+<canvas id="myCanvas" style="border: 1px solid rgb(211, 211, 211); width: 840px; height: 30px;" width="1000" height="500">Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script language="javascript">
+document.getElementById('myCanvas').style.width = CA.width*CA.cellSize + "px";
+document.getElementById('myCanvas').style.height = CA.height*CA.cellSize + "px";
+</script>
+<br>
+<br>
+<button class="w3-btn" style="width:140px;height:50px;" onclick="pause()">
+	<img src="./img/pause-button.png" style="width: 18px;height: 18px;">  <font size="5"> Pause </font> </button>
+<button class="w3-btn" style="width:140px;height:50px;" onclick="cont()">
+	<img src="./img/play.png" style="width: 18px;height: 18px;">  <font size="5"> Play </font> </button>
+<button class="w3-btn" style="width:140px;height:50px;" onclick="reset()">
+	<img src="./img/replay-arrow.png" style="width: 18px;height: 18px;">  <font size="5"> Reset </font> </button>
+<br>
+<br>
+<div style="width:60%;margin-right: auto; margin-left: auto; " border="0">
+	<font size="5">
+Plant Growth: <input style="width:4em" class="w3-btn" type="number" step="0.01" value="1" min="0.0" max="1.0" id="plantbirth" onchange="setplantbirth()" align="middle">
+Plant Death: <input style="width:4em" class="w3-btn" type="number" step="0.01" value="0.1" min="0.0" max="1.0" id="plantdeath" onchange="setplantdeath()" align="middle">
+<br>
+Goat Eat Rate: <input style="width:4em" class="w3-btn" type="number" step="0.01" value="0.03" min="0.0" max="1.0" id="goatbirth" onchange="setgoatbirth()" align="middle">
+Goat Death: <input style="width:4em" class="w3-btn" type="number" step="0.01" value="0.2" min="0.0" max="1.0" id="goatdeath" onchange="setgoatdeath()" align="middle">
+<br>
+Lion Eat Rate: <input style="width:4em" class="w3-btn" type="number" step="0.01" value="0.01" min="0.0" max="1.0" id="lionbirth" onchange="setlionbirth()" align="middle">
+Lion Death: <input style="width:4em" class="w3-btn" type="number" step="0.01" value="0.2" min="0.0" max="1.0" id="liondeath" onchange="setliondeath()" align="middle">
+	</font>
+</div>
+<script language="javascript">
+
+var c = document.getElementById("myCanvas");
+
+width= c.width;
+height= c.height;
+
+var ctx = c.getContext("2d", {antialias: true});
+ctx.beginPath();
+ctx.lineWidth = 5.0;
+ctx.lineCap = 'round';
+//ctx.lineJoin = "bevel";
+ctx.fillStyle = "white";
+
+ctx.fillRect(0, 0, width, height);
+
+timepoint = 0;
+plantprev = CA.getPopsize(1)/(CA.width*CA.height)*height;
+plantgoat = CA.getPopsize(2)/(CA.width*CA.height)*height;
+plantlion = CA.getPopsize(3)/(CA.width*CA.height)*height;
+
+stepsize = 5;
+ctx.moveTo(timepoint,height-plantprev);
+
+var zoomy = 1;
+
+function graphUpdate()
+{
+	if(paused) return;
+	plant = (CA.getPopsize(1)/(CA.width*CA.height))*height;
+    goat = (CA.getPopsize(2)/(CA.width*CA.height))*height;
+    lion = (CA.getPopsize(3)/(CA.width*CA.height))*height;
+
+	ctx.strokeStyle="#00ac25";
+	ctx.beginPath();
+	ctx.moveTo(timepoint,height-plantprev*zoomy);
+	ctx.lineTo(timepoint+stepsize,height-plant*zoomy);
+	ctx.stroke();
+	plantprev = plant;
+	
+	ctx.strokeStyle="#808080";
+	ctx.beginPath();
+	ctx.moveTo(timepoint,height-plantgoat*zoomy);
+	ctx.lineTo(timepoint+stepsize,height-goat*zoomy);
+	ctx.stroke();
+    plantgoat = goat;
+    
+    ctx.strokeStyle="#ff9100";
+	ctx.beginPath();
+	ctx.moveTo(timepoint,height-plantlion*zoomy);
+	ctx.lineTo(timepoint+stepsize,height-lion*zoomy);
+	ctx.stroke();
+	plantlion = lion;
+	
+	lastreport = CA.time;
+	timepoint+=stepsize;
+	if(timepoint >= width)
+	{
+		ctx.clearRect(0,0,width,height);
+		ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, width, height);
+		timepoint=0;
+	}
+}
+
+var interval = setInterval(function () { graphUpdate(); }, 100);		
+// Reports living predator / plant to console
+//clearInterval(interval)
+
+</script>
+<br>
+<font size="3">(made with terra.js javascript library:</font>
+<a href="https://rileyjshaw.com/terra/">https://rileyjshaw.com/terra/)</a>
+<br>
+</div>
+</div>
+
+</div>
+</body>
+</html>
