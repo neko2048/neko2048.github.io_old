@@ -132,6 +132,8 @@ terra.Terrarium.prototype.getPopsize = function (s)
 	}
 	return popsize;
 };
+
+
 /**
 	A FUNCTION TO REPORT THE CURRENT TIME
  * @return {grid}       a grid adhering to the above rules
@@ -142,3 +144,30 @@ terra.Terrarium.prototype.reportTime = function (time)
 	document.getElementById("time").innerHTML='Time: '+this.time
 	lastreport = this.time;
 }
+
+terra.Terrarium.prototype.getPopsizebyType = function (char) 
+{
+	var popsize = 0;
+	for (var x = 0, _w = this.width; x < _w; x++) {
+		for (var y = 0, _h = this.height; y < _h; y++) {
+			if(this.grid[x][y].type == char) popsize++;
+		}
+	}
+	return popsize;
+};
+
+
+terra.Terrarium.prototype.killSomebyType = function (s,frac) 
+{
+	for (var x = 0, _w = this.width; x < _w; x++) {
+		for (var y = 0, _h = this.height; y < _h; y++) {
+			if(this.grid[x][y].type == s)
+			{
+				if(Math.random() < frac)
+				{
+					this.grid[x][y].energy = 0;
+				}
+			}
+		}
+	}
+};
