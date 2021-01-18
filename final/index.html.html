@@ -1,0 +1,244 @@
+<html lang="en-GB">
+<head><title>FinalProject</title></head>
+
+<body class="error404 custom-background wp-custom-logo right-sidebar  hfeed" bgcolor="#ddddf8">
+
+<div id="page" class="site ">
+    <div id="content" class="site-content"><script src="js_file/terra.js"></script>    <!-- Basic CA package by MIT -->
+<!--<script src="js_file/lodash.js"></script> -->  <!-- Array manipulation -->
+<script src="js_file/terra_more.js"></script> <!-- Extra CA functions added by Bram van Dijk 2018 -->
+
+<div align="center">
+<font size="50"><span style="color:#00ac25;"><b>Plant</span>, <span style="color:#0000ff;">Bugs</span>, and <span style="color:#ff0000;">Birds</span></b><br></font>
+<br>
+<font size="5">
+-Bugs eat Plant. Birds eat Both.-
+</font>
+<br><br>
+
+<!--Canvas for crature -->
+<canvas id="heres" style="border:0px solid #d3d3d3;" width="1" height="1">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+
+<canvas width="1050" height="300" style="width: 840px; height: 30px;padding-left: 0;padding-right: 0;
+    margin-left: auto;margin-right: auto;display: block"></canvas>
+
+<script language="javascript">
+
+/**
+** FIRST SETUP SOME VARIABLES
+*/
+
+var killplant = 0.0;
+var killbugs = 0.0;
+var killbirds = 0.0;
+
+window.onload = function(){
+  document.getElementById("killplant").value = killplant;
+  document.getElementById("killbugs").value = killbugs;
+  document.getElementById("killbirds").value = killbirds;
+}
+
+var CA = new terra.Terrarium(210, 70, {
+  cellSize:4,
+  neighborhood: 'moore',
+  insertAfter: document.getElementById('heres'),
+  periodic: true, 
+  background: [255, 255, 255]
+});
+
+/**
+	The following functions interact with the web-page form elements
+**/
+function pause()
+{// Pause Btn //
+	CA.stop();
+	paused = true;
+}
+function cont()
+{// Continue Btn //
+	if(!paused) return
+	CA.simulate();
+	paused = false;
+}
+function reset()
+{// Reset Btn //
+    CA.grid = CA.makeGridWithDistribution([['plant', 50], ['bugs', 5], ['birds', 1]]);
+    CA.grid = CA.step(5);
+    CA.draw();
+}
+function killplantf()
+{
+    var percent = document.getElementById("killplant").value / 100;
+    CA.killSomebyType('plant',percent);
+    document.getElementById("killplant").value = 0.0;
+}
+function killbugsf(percent)
+{
+    var percent = document.getElementById("killbugs").value / 100;
+    CA.killSomebyType('bugs',percent);
+    document.getElementById("killbugs").value = 0.0;
+}
+function killbirdsf(percent)
+{
+    var percent = document.getElementById("killbirds").value / 100;
+    CA.killSomebyType('birds',percent);
+    document.getElementById("killbirds").value = 0.0;
+}
+</script>
+
+<script language="javascript">
+terra.registerCreature({
+  type: 'plant',
+  color: [0, 120, 0],
+  size: 10,
+  initialEnergy: 5,
+  maxEnergy: 20,
+  move: false,
+  reproduceLv: 0.75, // produce rate 0.75 if energy >= 5
+  wait: function() {
+    this.energy += 1;
+  },
+});
+
+terra.registerCreature({
+  type: 'bugs',
+  color: [0, 0, 255],
+  maxEnergy: 50,
+  initialEnergy: 10,
+  size: 20, 
+  actionRadius: 1, 
+  sustainability: 2,
+  wait: function() {
+      this.energy -= 10;
+  },
+});
+
+terra.registerCreature({
+  type: 'birds',
+  color: [255, 0, 0],
+  maxEnergy: 100,
+  initialEnergy: 50,
+  size: 30,
+  wait: function() {
+      this.energy -= 30;
+  },
+});
+
+CA.grid = CA.makeGridWithDistribution([['plant', 50], ['bugs', 5], ['birds', 1]]);
+CA.grid = CA.step(5);
+CA.draw();
+if(!paused) CA.simulate();
+
+var interval = setInterval(function () { CA.reportTime(); }, 200); 			// Reports time to a div called "time" 
+var interval = setInterval(function () { CA.reportLiving(); }, 800);		// Reports living predator / plant to consolevar interval = setInterval(function () { CA.reportTime(); }, 200); 			// Reports time to a div called "time" 
+
+</script>
+<canvas id="myCanvas" style="border: 1px solid rgb(211, 211, 211); width: 840px; height: 30px;" width="1000" height="500">Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script language="javascript">
+document.getElementById('myCanvas').style.width = CA.width*CA.cellSize + "px";
+document.getElementById('myCanvas').style.height = CA.height*CA.cellSize + "px";
+</script>
+<br><br>
+<button class="w3-btn" style="width:140px;height:50px;" onclick="pause()">
+	<img src="./img/pause-button.png" style="width: 18px;height: 18px;">  <font size="5"> Pause </font> </button>
+<button class="w3-btn" style="width:140px;height:50px;" onclick="cont()">
+	<img src="./img/play.png" style="width: 18px;height: 18px;">  <font size="5"> Play </font> </button>
+<button class="w3-btn" style="width:140px;height:50px;" onclick="reset()">
+	<img src="./img/replay-arrow.png" style="width: 18px;height: 18px;">  <font size="5"> Reset </font> </button>
+<br><br>
+<div style="width:60%;margin-right: auto; margin-left: auto; " border="0">
+<font size=5 style="margin-right: 60px;">
+Plant Kill (%): <input style="width:4em;font-size:18px" class="w3-btn" type="number" step="1" value="0.0" min="0.0" max="100" id="killplant" onchange="killplantf()" align="middle">
+</font>
+<font size=5>
+Bugs Kill (%): <input style="width:4em;font-size:18px" class="w3-btn" type="number" step="1" value="0.0" min="0.0" max="100" id="killbugs" onchange="killbugsf()" align="middle">
+</font>
+<font size=5 style="margin-left: 60px;">
+Birds Kill (%): <input style="width:4em;font-size:18px" class="w3-btn" type="number" step="1" value="0.0" min="0.0" max="100" id="killbirds" onchange="killbirdsf()" align="middle">
+</font></div>
+
+<script language="javascript">
+
+var c = document.getElementById("myCanvas");
+
+width= c.width;
+height= c.height;
+
+var ctx = c.getContext("2d", {antialias: true});
+ctx.beginPath();
+ctx.lineWidth = 5.0;
+ctx.lineCap = 'round';
+ctx.fillStyle = "white";
+
+ctx.fillRect(0, 0, width, height);
+
+timepoint = 0;
+var scale = 5
+preyprev = CA.getPopsizebyType("plant")/(CA.width*CA.height)*height;
+preypred2 = CA.getPopsizebyType("bugs")/(CA.width*CA.height)*height*scale;
+preypred3 = CA.getPopsizebyType("birds")/(CA.width*CA.height)*height*scale;
+
+stepsize = 5;
+ctx.moveTo(timepoint,height-preyprev);
+
+var zoomy = 1;
+
+function graphUpdate()
+{
+	if(paused) return;
+  prey = (CA.getPopsizebyType("plant")/(CA.width*CA.height))*height;
+  pred2 = (CA.getPopsizebyType("bugs")/(CA.width*CA.height))*height*scale;
+  pred3 = (CA.getPopsizebyType("birds")/(CA.width*CA.height))*height*scale;
+
+	ctx.strokeStyle="#007800";
+	ctx.beginPath();
+	ctx.moveTo(timepoint,height-preyprev*zoomy);
+	ctx.lineTo(timepoint+stepsize,height-prey*zoomy);
+	ctx.stroke();
+	preyprev = prey;
+    
+	ctx.strokeStyle="#0000ff";
+	ctx.beginPath();
+	ctx.moveTo(timepoint,(height-preypred2*zoomy));
+	ctx.lineTo(timepoint+stepsize,(height-pred2*zoomy));
+	ctx.stroke();
+  preypred2 = pred2;
+    
+  ctx.strokeStyle="#ff0000";
+	ctx.beginPath();
+	ctx.moveTo(timepoint,(height-preypred3*zoomy));
+	ctx.lineTo(timepoint+stepsize,(height-pred3*zoomy));
+	ctx.stroke();
+	preypred3 = pred3;
+
+	lastreport = CA.time;
+	timepoint+=stepsize;
+	if(timepoint >= width)
+	{
+		ctx.clearRect(0,0,width,height);
+		ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, width, height);
+		timepoint=0;
+	}
+}
+
+var interval = setInterval(function () { graphUpdate(); }, 100);		
+// Reports living predator
+
+</script>
+<br>
+<font size="3">(made with terrajs javascript library from Riley Shaw, 
+    <a href="https://rileyjshaw.com/terra/">https://rileyjshaw.com/terra/</a>)</font>
+<br>
+<br>
+<font size="3">The other game:  
+    <a href="https://neko2048.github.io/final/foodchain.html">https://neko2048.github.io/final/foodchain.html</a>)</font>
+<br>
+</div>
+</div>
+
+
+</div><div id="my-extension-installed" style="visibility: hidden;"></div></body><div id="shopback-app" style="z-index: 2147483647 !important;"><div id="PriceComparison"></div></div><div id="edge-translate-notifier-container" class="edge-translate-notifier-center"></div></html>
