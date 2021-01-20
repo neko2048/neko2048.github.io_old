@@ -5,7 +5,6 @@
 
 <div id="page" class="site ">
     <div id="content" class="site-content"><script src="js_file/terra.js"></script>    <!-- Basic CA package by MIT -->
-<!--<script src="js_file/lodash.js"></script> -->  <!-- Array manipulation -->
 <script src="js_file/terra_more.js"></script> <!-- Extra CA functions added by Bram van Dijk 2018 -->
 <script src="js_file/jquery.js"></script>
 <div align="center">
@@ -58,34 +57,37 @@ function pause()
 {// Pause Btn //
 	CA.stop();
 	paused = true;
+	document.getElementById("console").innerHTML="=".repeat(20)+"Pause"+"=".repeat(20)+"<br>"+document.getElementById("console").innerHTML;
 }
 function cont()
 {// Continue Btn //
 	if(!paused) return
 	CA.simulate();
 	paused = false;
+	document.getElementById("console").innerHTML="=".repeat(18)+"Continue"+"=".repeat(18)+"<br>"+document.getElementById("console").innerHTML;
 }
 function reset()
 {// Reset Btn //
     CA.grid = CA.makeGridWithDistribution([['plant', 50], ['bugs', 5], ['birds', 1]]);
     CA.grid = CA.step(5);
     CA.draw();
+	document.getElementById("console").innerHTML="=".repeat(20)+"Reset"+"=".repeat(20)+"<br>"+document.getElementById("console").innerHTML;
 }
 function killplantf()
 {
-    var percent = document.getElementById("killplant").value / 100;
+    var percent = $('#killplant').val() / 100;
     CA.killSomebyType('plant',percent);
     document.getElementById("killplant").value = 0.0;
 }
 function killbugsf(percent)
 {
-    var percent = document.getElementById("killbugs").value / 100;
+    var percent = $('#killbugs').val() / 100;
     CA.killSomebyType('bugs',percent);
     document.getElementById("killbugs").value = 0.0;
 }
 function killbirdsf(percent)
 {
-    var percent = document.getElementById("killbirds").value / 100;
+    var percent = $('#killbirds').val() / 100;
     CA.killSomebyType('birds',percent);
     document.getElementById("killbirds").value = 0.0;
 }
@@ -134,8 +136,10 @@ CA.grid = CA.step(5);
 CA.draw();
 if(!paused) CA.simulate();
 
-var interval = setInterval(function () { CA.reportTime(); }, 200); 			// Reports time to a div called "time" 
-var interval = setInterval(function () { CA.reportLiving(); }, 800);		// Reports living predator / plant to consolevar interval = setInterval(function () { CA.reportTime(); }, 200); 			// Reports time to a div called "time" 
+var interval = setInterval(function () { CA.reportTime(); }, 200);
+// Reports time to a div called "time" 
+var interval = setInterval(function () { CA.reportLiving(); }, 800);
+// Reports living predator // Reports time to a div called "time" 
 
 </script>
 <canvas id="myCanvas" style="border: 1px solid rgb(211, 211, 211); width: 840px; height: 30px;" width="1000" height="500">Your browser does not support the HTML5 canvas tag.</canvas>
@@ -143,9 +147,20 @@ var interval = setInterval(function () { CA.reportLiving(); }, 800);		// Reports
 <script language="javascript">
 document.getElementById('myCanvas').style.width = CA.width*CA.cellSize + "px";
 document.getElementById('myCanvas').style.height = CA.height*CA.cellSize + "px";
+
 $(document).ready(function(){
-  $("p").click(function(){
-    location.reload();
+  var count = 1;
+  $(".hidebtn").click(function(){
+    if (count % 2 === 1) {
+    	count ++;
+    	$(".hide").show();
+    	$(".hidebtn").html("Hide Log");
+    }
+    else if(count % 2 === 0) {
+    	count ++;
+    	$(".hide").hide();
+    	$(".hidebtn").html("Show Log");
+    };
   });
 });
 
@@ -157,7 +172,6 @@ $(document).ready(function(){
 	<img src="./img/play.png" style="width: 18px;height: 18px;">  <font size="5"> Play </font> </button>
 <button class="w3-btn" style="width:140px;height:50px;" onclick="reset()">
 	<img src="./img/replay-arrow.png" style="width: 18px;height: 18px;">  <font size="5"> Reset </font> </button>
-<p>Click on me to restart demonstration</p>
 <br><br>
 <div style="width:60%;margin-right: auto; margin-left: auto; " border="0">
 <font size=5 style="margin-right: 60px;">
@@ -169,7 +183,11 @@ Bugs Kill (%): <input style="width:4em;font-size:18px" class="w3-btn" type="numb
 <font size=5 style="margin-left: 60px;">
 Birds Kill (%): <input style="width:4em;font-size:18px" class="w3-btn" type="number" step="1" value="0.0" min="0.0" max="100" id="killbirds" onchange="killbirdsf()" align="middle">
 </font></div>
+<br>
 
+<div class="hidebtn" style="border-width: 3px ; width: 150px; height: 30px ; padding: 15px; text-align: center; background-color: rgb(41, 105, 176, 0.7);border-radius: 4px;color: rgb(255, 255, 255);font-size: 20;font-family:Consolas;">Show Log</div><br>
+<div id="time" class="hide" style="margin-right: auto; margin-left: auto; height:40px;width:60%;border:1px solid #d3d3d3;font-family:Consolas;padding:10px;font-size:20px;display: none;" align="center">Time: 0</div>
+<div id="console" class="hide" style="margin-right: auto; margin-left: auto;overflow-y:scroll;height:350px;width:60%;border:1px solid #d3d3d3;font-family:Consolas;padding:10px;font-size:20px;display: none;">Running...</div>
 <script language="javascript">
 
 var c = document.getElementById("myCanvas");
@@ -230,7 +248,7 @@ function graphUpdate()
 	{
 		ctx.clearRect(0,0,width,height);
 		ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, width, height);
+		ctx.fillRect(0, 0, width, height);
 		timepoint=0;
 	}
 }
@@ -247,8 +265,4 @@ var interval = setInterval(function () { graphUpdate(); }, 100);
 <font size="3">The other game:  
     <a href="https://neko2048.github.io/final/foodchain.html">https://neko2048.github.io/final/foodchain.html</a>)</font>
 <br>
-</div>
-</div>
-
-
-</div><div id="my-extension-installed" style="visibility: hidden;"></div></body><div id="shopback-app" style="z-index: 2147483647 !important;"><div id="PriceComparison"></div></div><div id="edge-translate-notifier-container" class="edge-translate-notifier-center"></div></html>
+</div></div></div></html>
