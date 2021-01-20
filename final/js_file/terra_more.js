@@ -106,6 +106,7 @@ terra.Terrarium.prototype.toggleMix = function ()
 	A FUNCTION TO REPORT SOME FEATURES
  * @return {grid}       a grid adhering to the above rules
  */
+/*
 terra.Terrarium.prototype.reportLiving = function () 
 {
 	if(this.time == lastreport)	return;
@@ -120,8 +121,10 @@ terra.Terrarium.prototype.reportLiving = function ()
 	var report = 'Currently '+numprey+' mosquitoes and '+numpred+' spiders.';
 	document.getElementById("console").innerHTML=report+"<br>"+document.getElementById("console").innerHTML;
 	lastreport = this.time;
-};
+};*/
 
+
+// self defined //
 terra.Terrarium.prototype.getPopsize = function (s) 
 {
 	var popsize = 0;
@@ -170,4 +173,22 @@ terra.Terrarium.prototype.killSomebyType = function (s,frac)
 			}
 		}
 	}
+};
+
+terra.Terrarium.prototype.reportLiving = function () 
+{
+	if(this.time == lastreport)	return;
+	var numplant = 0;
+	var numbugs = 0;
+	var numbirds = 0;
+	for (var x = 0, _w = this.width; x < _w; x++) {
+		for (var y = 0, _h = this.height; y < _h; y++) {
+			if(this.grid[x][y].type == 'plant') numplant++;
+			if(this.grid[x][y].type == 'bugs') numbugs++;
+			if(this.grid[x][y].type == 'birds') numbirds++;
+		}
+	}
+	var report = numplant+' plant, '+numbugs+' bugs and '+numbirds+' birds';
+	document.getElementById("console").innerHTML=report+"<br>"+document.getElementById("console").innerHTML;
+	lastreport = this.time;
 };
