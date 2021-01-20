@@ -4,7 +4,7 @@ https://neko2048.github.io/final
 還有在頁底附上另一個同樣也是生物系統平衡, 但著重於關於parameter上的調整去看動態的變化
 3. 做了什麼, 用的技巧: 
   * 引用其他作者所做的JS library
-  * 並有自行擴增一些它內部的function, 像是算population size等等, 不然他能用的好少
+  * 並有自行擴增一些它內部的function, 像是算population size跟一些可以紀錄report功能等等, 不然他能用的好少
   * 有用到老師要求的jquery
   * 用到了canvas, 用它來畫圖, 特別是動態的時序圖
 4. 特色亮點: 
@@ -13,4 +13,6 @@ https://neko2048.github.io/final
   * 可以看到時間上族群大小的變化
   * 可以利用下方的控制選項來影響整個生物系統
   * 可以改變控制後就立刻看到動態變化的效果
+  * 可以隱藏或是顯示紀錄表(Log), 讓想知道實際數量的人可以隨時查看!
   * 註解: 紅色的鳥跟藍色的蟲在時序圖上的population size我有放大, 不然太小了, 並非畫錯
+  * 註解: 測下來不知道為什麼Log上Chrome跟Edge在紀錄數量時計算時間都拖很久(都要拖到Time大概到1000左右時), 建議用firefox開, 我firefox用測起來看起來比較正常一點
