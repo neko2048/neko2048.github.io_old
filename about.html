@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Clean Blog - Start Bootstrap Theme</title>
+        <title>Fu-Sheng - About Me</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -14,12 +14,14 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/style_origin.css" rel="stylesheet" />
+        <link href="css/icomoon.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                <a class="navbar-brand" href="index.html">Neko1024</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -27,15 +29,14 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="portfolio.html">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+        <header class="masthead" style="background-image: url('./figs/background/cloud.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -47,18 +48,200 @@
                 </div>
             </div>
         </header>
+
+
         <!-- Main Content-->
         <main class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+                        <!-- Who am I -->
+                        <div class="fs_title_txt">About Me</div>
+                        <div class="fs_middle_title_txt">Who Am I?</div>
+                        <span>I am a student studying in National Taiwan University (NTU), majoring in atmospheric sciences. </span>
+                        <span>To proficient in AI, I'm also in the program called "Neurobiology and Cognitive Science Program". </span>
+                        <p>I am passionate in is modelling no matter in atmospheric one or cognitive one numerically. 
+                        It's awesome to see model work and the modelling results after hard trying.
+                        Besides, learning language is also one of my interests. I can speak Chinese, English, Taiwanese, and Japanese.</p>
+                        <!-- What I Do-->
+                        <div class="fs_title_txt">What I do</div>
+                        <div class="fs_middle_title_txt">Some of My Expertise</div>
+                        <!-- What I Do - Icons -->
+                        <div class="row row-pt-md">
+                            <div class="col-md-4 text-center animate-box">
+                                <div class="services color-1">
+                                    <span class="icon">
+                                        <i class="icon-bulb"></i><button class="ducksound" onclick="snd.play()"> </button>
+                                    </span>
+                                    <div class="desc">
+                                        <p class="fs_middle_txt">Modeling</p>
+                                        <p class="fs_little_word">Modeling 2D Convection by Math Equations and Numerical Skills</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center animate-box">
+                                <div class="services color-2">
+                                    <span class="icon">
+                                        <i class="icon-data"></i>
+                                    </span>
+                                    <div class="desc">
+                                        <p class="fs_middle_txt">Language</p>
+                                        <p class="fs_little_word">Chinese, English, Taiwanese, and Japanese</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center animate-box">
+                                <div class="services color-3">
+                                    <span class="icon">
+                                        <i class="icon-phone3"></i>
+                                   </span>
+                                    <div class="desc">
+                                        <p class="fs_middle_txt">Atmospheric Sciences</p>
+                                        <p class="fs_little_word">Numerical Modeling and Microphysics Parameterization</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center animate-box">
+                                <div class="services color-4">
+                                    <span class="icon">
+                                        <i class="icon-layers2"></i>
+                                    </span>
+                                    <div class="desc">
+                                        <p class="fs_middle_txt">Graphic Design</p>
+                                        <p class="fs_little_word">Making Infographic.<br>Major in Photoshop,<br> PPT visual design</p>
+                                    </div>
+                               </div>
+                            </div>
+
+                            <div class="col-md-4 text-center animate-box">
+                                <div class="services color-5">
+                                    <span class="icon">
+                                        <i class="icon-AI"></i>
+                                    </span>
+                                    <div class="desc">
+                                        <p class="fs_middle_txt">Artificial Intelligence</p>
+                                        <p  class="fs_little_word">Counterfactual Inference</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center animate-box">
+                                <div class="services color-6">
+                                    <span class="icon">
+                                        <i class="icon-program"></i>
+                                    </span>
+                                    <div class="desc">
+                                        <p class="fs_middle_txt">Programming</p>
+                                        <p class="fs_little_word">Major in  Python, Fortran.<br> Minor in C++, R, and Java.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
+
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box">
+                                    <span class="heading-meta fs_title_txt">Experience</span>
+                                    <h2 class="colorlib-heading fs_middle_title_txt">Experience in Work & Society</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="timeline-centered">
+                                        <article class="timeline-entry animate-box">
+                                            <div class="timeline-entry-inner">
+                                                <div class="timeline-icon color-1">
+                                                    <i class="icon-pen2"></i>
+                                                </div>
+                                                <div class="timeline-label">
+                                                    <h2>WeatherRisk Trainee <span>2018-2019</span></h2>
+                                                    <p>Being a trainee at WeatherRisk, the local weather company. I was responsible for the infographic about weather information.
+                                                    Simultaneously, I learned the ability to edit videos and some of media.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-entry animate-box">
+                                            <div class="timeline-entry-inner">
+                                                <div class="timeline-icon color-2">
+                                                    <i class="icon-club"></i>
+                                                </div>
+                                                <div class="timeline-label">
+                                                    <h2>Kendo Club and Trail Action Club <span>2018-2020</span></h2>
+                                                    <p>I love to embrace many different cultures and activities that I have never experienced.
+                                                    Thus, I choose some clubs that seems unpopular for me.
+                                                    In society activities, I enrolled both two clubs. I participated in Kendo Club to learn many 
+                                                    Japanese cultures deeply and in person and enhance physical strength. In Trail Action Club, we went to many
+                                                    places like Hehuan Mountain and Xitou to build trails by the local materials like woods and rocks, which is an exhausted but fascinated experience. 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-entry animate-box">
+                                            <div class="timeline-entry-inner">
+                                                <div class="timeline-icon color-3">
+                                                    <i class="icon-MIL"></i>
+                                                </div>
+                                                <div class="timeline-label">
+                                                    <h2>Summer Intership in MIL <span>2020</span></h2>
+                                                    <p>I participated the summer intership in Modeling and Informatic Lab (MIL). In the entire summer vacation, 
+                                                    I and my partners read papers about emotion, dual processes, logic, and computational models for psychology.
+                                                    In the end of the summer, I studied for the "Neural Symbolic" model, which combines CNN, LSTM and reasoning process.
+                                                    This model has the ability to judge the question for one scene image and return an answer according to the figure and question given.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-entry animate-box">
+                                            <div class="timeline-entry-inner">
+                                                <div class="timeline-icon color-4">
+                                                    <i class="icon-cloud"></i>
+                                                </div>
+                                                <div class="timeline-label">
+                                                    <h2>Summer Research Project in LCDM <span>2020</span></h2>
+                                                    <p>In this research project following with Lab for Cloud Dynamics and Modeling, I build up my own 2D convection model about atmosphere from zero.
+                                                    We can set up initial atmosphere condition like one thermal bubble inside and it can evolve as a convective cloud including cloud, rain process.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-entry animate-box">
+                                            <div class="timeline-entry-inner">
+                                                <div class="timeline-icon color-5">
+                                                    <i class="icon-AI2"></i>
+                                                </div>
+                                                <div class="timeline-label">
+                                                    <h2>AAI Project <span>2020-2021</span></h2>
+                                                    <p>I coroperated with who from other departments trying to build up a model 
+                                                        having machenism of emotion, learning, and ability to response to the environment. 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-entry begin animate-box">
+                                            <div class="timeline-entry-inner">
+                                                <div class="timeline-icon color-none">
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">
@@ -66,23 +249,15 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <ul class="list-inline text-center">
                             <li class="list-inline-item">
-                                <a href="#!">
+                                <a href="mailto:b07209009@ntu.edu.tw">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
+                                <a target=_blank href="https://github.com/neko2048/neko2048">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -90,14 +265,17 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2021</div>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Fu-Sheng Kao 2021</div>
                     </div>
                 </div>
             </div>
         </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
 </html>
+
+
+<script>
+    var snd = new Audio("./sounds/Duck-quack-trim.mp3"); 
+</script>
